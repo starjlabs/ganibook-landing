@@ -205,10 +205,10 @@
 (function () {
   var root = document.documentElement;
 
-  // Theme: saved choice > system preference > dark default
+  // Theme: saved choice > dark default (brand default for everyone)
   var saved = null;
   try { saved = localStorage.getItem('gb-theme'); } catch (e) {}
-  var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  var theme = saved || 'dark';
   root.setAttribute('data-theme', theme);
 
   var toggle = document.getElementById('themeToggle');
