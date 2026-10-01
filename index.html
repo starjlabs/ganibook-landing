@@ -31,7 +31,7 @@
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-cta">
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch between dark and light mode">🌙</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch between dark and light mode"><span class="tt-i">🌙</span><span class="tt-i">☀️</span><span class="tt-knob"><span id="ttK">🌙</span></span></button>
       <a class="btn ghost sm" href="https://personal-money-manager-gold.vercel.app">Sign In</a>
       <a class="btn primary sm" href="https://personal-money-manager-gold.vercel.app">Get Started Free</a>
       <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -201,8 +201,9 @@
 
   var toggle = document.getElementById('themeToggle');
   function paintToggle() {
-    toggle.textContent = root.getAttribute('data-theme') === 'light' ? '🌙' : '☀️';
-    toggle.setAttribute('aria-label', root.getAttribute('data-theme') === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+    var light = root.getAttribute('data-theme') === 'light';
+    document.getElementById('ttK').textContent = light ? '☀️' : '🌙';
+    toggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
   }
   paintToggle();
   toggle.addEventListener('click', function () {
