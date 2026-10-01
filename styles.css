@@ -215,7 +215,7 @@ a { color: inherit; }
 .ph-nav em { display: block; font-style: normal; font-size: 6.5px; }
 
 /* ---------- Sections ---------- */
-section { padding: 60px 0; }
+section { padding: 48px 0; }
 section h2 { font-size: 34px; letter-spacing: -.5px; margin-bottom: 10px; color: var(--text); }
 .sec-sub { color: var(--muted); font-size: 16.5px; margin-bottom: 36px; max-width: 620px; }
 .grid5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
