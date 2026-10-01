@@ -55,6 +55,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+/* Anchor offset: keep section headings visible below the sticky header */
+#top, #features, #how, #privacy, #faq { scroll-margin-top: 88px; }
 body {
   background: var(--bg);
   color: var(--text);
