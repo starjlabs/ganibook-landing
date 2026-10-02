@@ -211,7 +211,20 @@
     root.setAttribute('data-theme', next);
     try { localStorage.setItem('gb-theme', next); } catch (e) {}
     paintToggle();
+    paintAppLinks();
   });
+
+  // The app lives on a different site, so pass the chosen theme along in the
+  // link itself (?theme=light|dark) — localStorage can't cross sites.
+  var APP_URL = 'https://personal-money-manager-gold.vercel.app';
+  function paintAppLinks() {
+    var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var links = document.querySelectorAll('a[href^="' + APP_URL + '"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute('href', APP_URL + '/?theme=' + t);
+    }
+  }
+  paintAppLinks();
 
   // Time-based greeting (visitor's local time, no name, no login)
   var h = new Date().getHours();
