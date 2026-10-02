@@ -96,7 +96,7 @@ a { color: inherit; }
   border-bottom: 1px solid var(--nav-border);
 }
 .nav-in { display: flex; align-items: center; gap: 24px; padding-top: 14px; padding-bottom: 14px; position: relative; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; background: linear-gradient(135deg, #0d1329, #090d1f); border-radius: 14px; padding: 8px 14px 8px 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; background: linear-gradient(135deg, #0d1329, #090d1f); border-radius: 14px; padding: 8px 14px 8px 10px; flex-shrink: 0; }
 .brand img { width: 44px; height: 44px; border-radius: 10px; display: block; }
 .brand-t { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-t strong { font-size: 20px; font-weight: 800; letter-spacing: .2px; }
@@ -107,7 +107,7 @@ a { color: inherit; }
 .links a { text-decoration: none; color: var(--link); font-size: 15px; font-weight: 500; padding: 6px 2px; }
 .links a:hover { color: var(--text); }
 .links a.active { color: var(--text); border-bottom: 2px solid #22b8e8; }
-.nav-cta { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.nav-cta { margin-left: auto; display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
 .theme-toggle {
   position: relative; width: 62px; height: 30px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--toggle-bg); cursor: pointer;
