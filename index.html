@@ -226,6 +226,18 @@
   }
   paintAppLinks();
 
+  // Extra safety: also carry the theme in window.name for same-tab
+  // navigations, in case anything along the way strips the query param.
+  // (The href ?theme= above already covers new-tab / middle-click.)
+  function armThemeName() {
+    var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    try { window.name = 'gb-theme:' + t; } catch (e) {}
+  }
+  var appLinks = document.querySelectorAll('a[href^="' + APP_URL + '"]');
+  for (var k = 0; k < appLinks.length; k++) {
+    appLinks[k].addEventListener('click', armThemeName);
+  }
+
   // Time-based greeting (visitor's local time, no name, no login)
   var h = new Date().getHours();
   var text = 'Good Evening', icon = '🌙';
