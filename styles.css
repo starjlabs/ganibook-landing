@@ -345,7 +345,7 @@ footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
   .devices { margin-top: 8px; display: flex; justify-content: center; }
   .laptop { display: none; }
   .phone { position: relative; right: auto; bottom: auto; width: 232px; margin: 6px auto 0; }
-  .grid5 { grid-template-columns: 1fr 1fr; }
+  .grid5 { grid-template-columns: 1fr; } /* 5 cards: no orphan 5th card on mobile */
   .fcard { padding: 22px 16px; }
   .fcard.wide { flex-direction: column; text-align: center; }
   .steps { grid-template-columns: 1fr; }
@@ -353,4 +353,18 @@ footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
   .close-band { padding: 48px 22px; }
   .close-band::after { display: none; }
   .foot-in { flex-direction: column; gap: 6px; }
+}
+/* Narrow phones: compress header so logo, wordmark, toggle, CTA and menu fit without overlap */
+@media (max-width: 460px) {
+  .wrap { padding: 0 12px; }
+  .nav-in { gap: 6px; }
+  .brand { padding: 6px 8px 6px 6px; gap: 6px; }
+  .brand img { width: 30px; height: 30px; }
+  .brand-t strong { font-size: 15px; }
+  .nav-cta { gap: 6px; }
+  .theme-toggle { width: 52px; height: 28px; padding: 0 6px; font-size: 12px; }
+  .theme-toggle .tt-knob { width: 18px; height: 18px; top: 4px; left: 4px; font-size: 10px; }
+  [data-theme="light"] .theme-toggle .tt-knob { left: 30px; }
+  .nav-cta .btn.primary.sm { padding: 7px 8px; font-size: 12px; }
+  .hamb { width: 32px; height: 32px; font-size: 16px; }
 }
