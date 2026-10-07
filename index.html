@@ -221,7 +221,7 @@
     var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     var links = document.querySelectorAll('a[href^="' + APP_URL + '"]');
     for (var i = 0; i < links.length; i++) {
-      links[i].setAttribute('href', APP_URL + '/?theme=' + t);
+      links[i].setAttribute('href', APP_URL + '/?theme=' + t + '&src=landing');
     }
   }
   paintAppLinks();
