@@ -219,9 +219,17 @@
   var APP_URL = 'https://app.ganibook.com';
   function paintAppLinks() {
     var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    // Preserve ad source: if the visitor arrived via ?src=facebook (ad click),
+    // forward it to the app so signup attribution survives. Otherwise default
+    // to 'landing'. The app validates the value (lib/signupSources.ts).
+    var src = 'landing';
+    try {
+      var p = new URLSearchParams(window.location.search).get('src');
+      if (p && /^[a-z0-9]+$/i.test(p)) src = p.toLowerCase();
+    } catch (e) {}
     var links = document.querySelectorAll('a[href^="' + APP_URL + '"]');
     for (var i = 0; i < links.length; i++) {
-      links[i].setAttribute('href', APP_URL + '/?theme=' + t + '&src=landing');
+      links[i].setAttribute('href', APP_URL + '/?theme=' + t + '&src=' + encodeURIComponent(src));
     }
   }
   paintAppLinks();
