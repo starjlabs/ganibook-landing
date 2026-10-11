@@ -308,6 +308,8 @@ section h2 { font-size: 34px; letter-spacing: -.5px; margin-bottom: 10px; color:
 footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
 .foot-in { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 14.5px; }
 .foot-tag { color: #22b8e8; }
+.foot-legal a { color: var(--muted); text-decoration: none; }
+.foot-legal a:hover { color: var(--text); text-decoration: underline; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1020px) {
