@@ -25,6 +25,9 @@
   --strip-bg: rgba(7,16,38,.55);
   --card-shadow: 0 16px 40px rgba(0,0,0,.35);
   --toggle-bg: rgba(255,255,255,.05);
+  --trial-bg: rgba(47,143,255,.10);
+  --trial-border: rgba(47,143,255,.28);
+  --trial-icon-bg: rgba(255,255,255,.07);
 }
 
 [data-theme="light"] {
@@ -45,6 +48,9 @@
   --glow-a: rgba(47,143,255,.14);
   --glow-b: rgba(120,80,255,.08);
   --glow-c: rgba(47,143,255,.10);
+  --trial-bg: #e9f1fd;
+  --trial-border: #bcd4f0;
+  --trial-icon-bg: #ffffff;
   --band-bg: linear-gradient(180deg, #ffffff, #e8f1fe);
   --band-glow: radial-gradient(600px 300px at 50% 120%, rgba(47,143,255,.18), transparent 65%);
   --band-glow2: radial-gradient(400px 240px at 85% -20%, rgba(47,143,255,.12), transparent 60%);
@@ -149,7 +155,28 @@ a { color: inherit; }
 .g-grad { background: linear-gradient(92deg, #ffc531, #ff8a3d); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .sub { color: var(--sub); font-size: 17.5px; max-width: 480px; }
 .cta-row { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
-.micro { color: var(--muted); font-size: 14.5px; margin-top: 14px; }
+.micro { color: var(--muted); font-size: 14.5px; margin-top: 14px; font-weight: 600; }
+
+/* ---------- Launch-trial gift card (15 Oct 2026) ---------- */
+.trial-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--trial-bg); border: 2px solid var(--trial-border);
+  border-radius: 16px; padding: 18px 22px; margin-top: 24px;
+  max-width: 600px;
+}
+.trial-icon {
+  flex: none; width: 58px; height: 58px; border-radius: 14px;
+  background: var(--trial-icon-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px; line-height: 1;
+}
+.trial-card p { margin: 0; font-size: 17px; line-height: 1.5; color: var(--text); font-weight: 600; }
+.close-band .trial-card { margin: 0 auto 30px; text-align: left; }
+@media (max-width: 560px) {
+  .trial-card { padding: 14px 16px; gap: 12px; margin-top: 20px; }
+  .trial-icon { width: 48px; height: 48px; font-size: 25px; border-radius: 12px; }
+  .trial-card p { font-size: 15px; }
+}
 .trust { display: flex; gap: 34px; margin-top: 30px; flex-wrap: wrap; }
 .trust > div { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--sub); line-height: 1.45; }
 .ti { font-size: 24px; line-height: 1.2; }
