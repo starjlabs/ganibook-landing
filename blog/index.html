@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GaniBook Blog — Money Management, Made Simpler</title>
+<meta name="description" content="Practical guides to tracking income, expenses, budgets and the money you lend. Simple money management tips from GaniBook.">
+<link rel="canonical" href="https://ganibook.com/blog/">
+<meta property="og:title" content="GaniBook Blog — Money Management, Made Simpler">
+<meta property="og:description" content="Practical guides to tracking income, expenses, budgets and the money you lend. Simple money management tips from GaniBook.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ganibook.com/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GaniBook Blog — Money Management, Made Simpler">
+<meta name="twitter:description" content="Practical guides to tracking income, expenses, budgets and the money you lend. Simple money management tips from GaniBook.">
+<link rel="icon" href="../logo.png">
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="https://ganibook.com/" aria-label="GaniBook home">
+      <img src="../logo.png" alt="GaniBook logo">
+      <span class="brand-t"><strong><span class="wm-gani">Gani</span><span class="wm-book">Book</span></strong><em>Know Your Money</em></span>
+    </a>
+    <div class="links" id="navLinks">
+      <a href="https://ganibook.com/">Home</a>
+      <a href="https://ganibook.com/#features">Features</a>
+      <a href="./" class="active">Blog</a>
+    </div>
+    <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch between dark and light mode"><span class="tt-i">🌙</span><span class="tt-i">☀️</span><span class="tt-knob"><span id="ttK">🌙</span></span></button>
+      <a class="btn ghost sm" href="https://app.ganibook.com">Sign In</a>
+      <a class="btn primary sm" href="https://app.ganibook.com">Get Started Free</a>
+      <button class="hamb" id="hamb" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap blog-main">
+  <header class="blog-hero">
+    <p class="blog-eyebrow">GaniBook Blog</p>
+    <h1>Money Management,<br>Made Simpler</h1>
+    <p class="blog-sub">Practical guides to tracking income, expenses, budgets and the money you lend.</p>
+  </header>
+
+  <section class="blog-latest" aria-label="Latest articles">
+    <h2>Latest articles</h2>
+    <div class="blog-empty">
+      <p><strong>Our first guides are on the way.</strong></p>
+      <p>Starting soon: <em>How to Track Your Income and Expenses in One Place</em> — a simple method to track your money in and money out.</p>
+      <p><a class="btn primary sm" href="https://app.ganibook.com">Try GaniBook free <span class="arr">→</span></a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>GaniBook · by Starj Labs</span>
+    <span class="foot-tag">Know Your Money</span>
+    <span class="foot-legal">
+      <a href="../disclaimer.html">Disclaimer</a> ·
+      <a href="../privacy.html">Privacy Policy</a> ·
+      <a href="../terms.html">Terms of Use</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  // Theme: saved choice > dark default (same mechanism as the landing page,
+  // same localStorage key, so the choice carries across ganibook.com pages).
+  var saved = null;
+  try { saved = localStorage.getItem('gb-theme'); } catch (e) {}
+  var theme = saved || 'dark';
+  root.setAttribute('data-theme', theme);
+
+  var toggle = document.getElementById('themeToggle');
+  function paintToggle() {
+    var light = root.getAttribute('data-theme') === 'light';
+    document.getElementById('ttK').textContent = light ? '☀️' : '🌙';
+    toggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+  }
+  paintToggle();
+  toggle.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('gb-theme', next); } catch (e) {}
+    paintToggle();
+    paintAppLinks();
+  });
+
+  // The app lives on a different site, so pass the chosen theme along in the
+  // link itself (?theme=light|dark) — localStorage can't cross sites.
+  var APP_URL = 'https://app.ganibook.com';
+  function paintAppLinks() {
+    var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var src = 'landing';
+    try {
+      var p = new URLSearchParams(window.location.search).get('src');
+      if (p && /^[a-z0-9]+$/i.test(p)) src = p.toLowerCase();
+    } catch (e) {}
+    var links = document.querySelectorAll('a[href^="' + APP_URL + '"]');
+    for (var i = 0; i < links.length; i++) {
+      links[i].setAttribute('href', APP_URL + '/?theme=' + t + '&src=' + encodeURIComponent(src));
+    }
+  }
+  paintAppLinks();
+
+  function armThemeName() {
+    var t = root.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    try { window.name = 'gb-theme:' + t; } catch (e) {}
+  }
+  var appLinks = document.querySelectorAll('a[href^="' + APP_URL + '"]');
+  for (var k = 0; k < appLinks.length; k++) {
+    appLinks[k].addEventListener('click', armThemeName);
+  }
+
+  // Mobile hamburger menu
+  var hamb = document.getElementById('hamb');
+  var links = document.getElementById('navLinks');
+  hamb.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    hamb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    hamb.textContent = open ? '✕' : '☰';
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      links.classList.remove('open');
+      hamb.setAttribute('aria-expanded', 'false');
+      hamb.textContent = '☰';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
