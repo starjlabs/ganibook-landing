@@ -283,6 +283,36 @@
       hamb.textContent = '☰';
     }
   });
+
+  // Nav active line: follow the section in view. It used to sit on Home
+  // forever because nothing ever moved it — now tap, scroll and direct
+  // #links all move it to the section actually on screen.
+  var navAs = document.querySelectorAll('#navLinks a');
+  function setActive(hash) {
+    for (var i = 0; i < navAs.length; i++) {
+      navAs[i].classList.toggle('active', navAs[i].getAttribute('href') === hash);
+    }
+  }
+  for (var j = 0; j < navAs.length; j++) {
+    (function (a) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        a.addEventListener('click', function () { setActive(href); });
+      }
+    })(navAs[j]);
+  }
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      for (var k = 0; k < entries.length; k++) {
+        if (entries[k].isIntersecting) setActive('#' + entries[k].target.id);
+      }
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    var secIds = ['top', 'features', 'how', 'privacy', 'faq'];
+    for (var s = 0; s < secIds.length; s++) {
+      var sec = document.getElementById(secIds[s]);
+      if (sec) spy.observe(sec);
+    }
+  }
 })();
 </script>
 
