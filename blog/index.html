@@ -49,23 +49,63 @@
     <p class="blog-sub">Practical guides to tracking income, expenses, budgets and the money you lend.</p>
   </header>
 
+  <div class="pills" role="group" aria-label="Filter articles by category">
+    <button class="pill on" data-filter="All">All</button>
+    <button class="pill" data-filter="Personal Finance">Personal Finance</button>
+    <button class="pill" data-filter="Expense Tracking">Expense Tracking</button>
+    <button class="pill" data-filter="Budgeting">Budgeting</button>
+    <button class="pill" data-filter="Money Management">Money Management</button>
+  </div>
+
   <section class="blog-featured" aria-label="Featured article">
     <article class="feat-card">
       <div class="feat-card-body">
         <p class="eyebrow">FEATURED ARTICLE</p>
-        <h3><a href="./how-to-track-income-and-expenses/">How to Track Your Income and Expenses in One Place</a></h3>
-        <p>A simple and practical method to track your money in and money out. Learn how to record income, expenses, transfers, loans and repayments, so you can see your complete financial picture in one place.</p>
-        <p class="art-meta">PERSONAL FINANCE · 7 min read</p>
-        <p><a class="read-link" href="./how-to-track-income-and-expenses/">Read article →</a></p>
+        <h3><a href="./notebook-method-tracking-expenses/">The Notebook Method: Why Writing Down Your Expenses Still Works</a></h3>
+        <p>Discover how the notebook method helps you track expenses, understand spending habits and manage money with a simple daily routine</p>
+        <p class="art-meta">MONEY MANAGEMENT · 7 min read</p>
+        <p><a class="read-link" href="./notebook-method-tracking-expenses/">Read article →</a></p>
       </div>
-      <a class="feat-card-img" href="./how-to-track-income-and-expenses/"><img src="images/article-01-featured.jpg" alt="Track income, expenses, transfers, lending, borrowing and repayments with GaniBook"></a>
+      <a class="feat-card-img" href="./notebook-method-tracking-expenses/"><img src="images/notebook-method-tracking-expenses.jpg" alt="Open financial notebook with handwritten expense records, calculator and smartphone expense dashboard" width="1200" height="803"></a>
     </article>
   </section>
 
   <section class="blog-latest" aria-label="Latest articles">
     <h2>Latest articles</h2>
     <div class="latest-grid">
-      <article class="art-card">
+      <article class="art-card" data-category="Money Management">
+        <a href="./notebook-method-tracking-expenses/"><img src="images/notebook-method-tracking-expenses.jpg" alt="Open financial notebook with handwritten expense records, calculator and smartphone expense dashboard" width="1200" height="803" loading="lazy"></a>
+        <div class="art-card-body">
+          <p class="art-meta">MONEY MANAGEMENT · 7 min read</p>
+          <h3><a href="./notebook-method-tracking-expenses/">The Notebook Method: Why Writing Down Your Expenses Still Works</a></h3>
+          <p><a class="read-link" href="./notebook-method-tracking-expenses/">Read article →</a></p>
+        </div>
+      </article>
+      <article class="art-card" data-category="Expense Tracking">
+        <a href="./track-expenses-without-bank-account/"><img src="images/track-expenses-without-bank-account.jpg" alt="Wallet, cash, card and receipts beside a smartphone showing expense categories" width="1200" height="797" loading="lazy"></a>
+        <div class="art-card-body">
+          <p class="art-meta">EXPENSE TRACKING · 6 min read</p>
+          <h3><a href="./track-expenses-without-bank-account/">How to Track Expenses Without Connecting Your Bank Account</a></h3>
+          <p><a class="read-link" href="./track-expenses-without-bank-account/">Read article →</a></p>
+        </div>
+      </article>
+      <article class="art-card" data-category="Money Management">
+        <a href="./how-to-track-money-lent-to-friends/"><img src="images/how-to-track-money-lent-to-friends.jpg" alt="Two friends recording a cash loan using a smartphone and notebook at a cafe" width="1200" height="666" loading="lazy"></a>
+        <div class="art-card-body">
+          <p class="art-meta">MONEY MANAGEMENT · 6 min read</p>
+          <h3><a href="./how-to-track-money-lent-to-friends/">How to Track Money You Lend to Friends and Family Without Awkwardness</a></h3>
+          <p><a class="read-link" href="./how-to-track-money-lent-to-friends/">Read article →</a></p>
+        </div>
+      </article>
+      <article class="art-card" data-category="Budgeting">
+        <a href="./best-mint-alternatives/"><img src="images/best-mint-alternatives.jpg" alt="Traditional expense notebook beside a smartphone showing a personal finance dashboard" width="1200" height="684" loading="lazy"></a>
+        <div class="art-card-body">
+          <p class="art-meta">BUDGETING · 5 min read</p>
+          <h3><a href="./best-mint-alternatives/">Best Mint Alternatives in 2026: 6 Budgeting Apps to Consider</a></h3>
+          <p><a class="read-link" href="./best-mint-alternatives/">Read article →</a></p>
+        </div>
+      </article>
+      <article class="art-card" data-category="Personal Finance">
         <a href="./how-to-track-income-and-expenses/"><img src="images/article-01-featured.jpg" alt="Track income, expenses, transfers, lending, borrowing and repayments with GaniBook"></a>
         <div class="art-card-body">
           <p class="art-meta">PERSONAL FINANCE · 7 min read</p>
@@ -156,6 +196,27 @@
       hamb.textContent = '☰';
     }
   });
+})();
+</script>
+
+<script>
+(function () {
+  var pills = document.querySelectorAll('.pill');
+  var cards = document.querySelectorAll('.latest-grid .art-card');
+  function applyFilter(cat) {
+    for (var i = 0; i < pills.length; i++) {
+      pills[i].classList.toggle('on', pills[i].getAttribute('data-filter') === cat);
+    }
+    for (var j = 0; j < cards.length; j++) {
+      var c = cards[j].getAttribute('data-category');
+      cards[j].style.display = (cat === 'All' || c === cat) ? '' : 'none';
+    }
+  }
+  for (var k = 0; k < pills.length; k++) {
+    pills[k].addEventListener('click', (function (cat) {
+      return function () { applyFilter(cat); };
+    })(pills[k].getAttribute('data-filter')));
+  }
 })();
 </script>
 

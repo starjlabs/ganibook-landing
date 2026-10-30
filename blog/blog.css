@@ -110,3 +110,14 @@ td.num { text-align: right; }
   .feat-card-img img { aspect-ratio: 16/9; height: auto; }
   .latest-grid { grid-template-columns: 1fr; }
 }
+
+/* Category filter pills (mockup style) + related-articles block */
+.pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 30px; }
+.pill { border: 1px solid var(--border); background: var(--card); color: var(--text); border-radius: 999px; padding: 8px 18px; font-size: 15px; font-weight: 600; cursor: pointer; }
+.pill.on { background: #1f7bef; border-color: #1f7bef; color: #fff; }
+.related { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px 24px; margin: 30px 0 8px; }
+.related p { color: var(--sub); font-size: 17px; line-height: 1.65; margin: 0 0 10px; }
+.related p strong { color: var(--text); }
+.related ul { padding-left: 22px; margin: 0; }
+.related li { font-size: 17px; line-height: 1.75; color: var(--sub); margin-bottom: 8px; }
+.related a { color: var(--link); text-decoration: none; font-weight: 700; }
