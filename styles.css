@@ -412,3 +412,14 @@ footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
     margin-right: auto;
   }
 }
+
+/* Cookie notice (EU/UK visitors only) — small bottom bar, follows the site theme
+   (dark/light) via the CSS variables above. Both buttons have equal visual
+   weight: same size, same weight, both filled. */
+.gb-cookie-notice { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; background: var(--card); color: var(--text); border-top: 1px solid var(--border); box-shadow: 0 -4px 24px rgba(0,0,0,.15); padding: 12px 20px; }
+.gb-cookie-notice-in { max-width: 760px; margin: 0 auto; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.gb-cookie-notice p { margin: 0; font-size: 14px; line-height: 1.6; flex: 1; min-width: 220px; }
+.gb-cookie-notice a { color: #2f8fff; text-decoration: underline; }
+.gb-cookie-btn { padding: 8px 22px; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; }
+.gb-cookie-ok { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+.gb-cookie-no { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
