@@ -422,4 +422,4 @@ footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
 .gb-cookie-notice a { color: #2f8fff; text-decoration: underline; }
 .gb-cookie-btn { padding: 8px 22px; font-size: 14px; font-weight: 600; border-radius: 8px; cursor: pointer; }
 .gb-cookie-ok { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
-.gb-cookie-no { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
+.gb-cookie-no { background: var(--border-soft); color: var(--text); border: 1px solid var(--border); }
