@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA reset — GaniBook</title>
+</head>
+<body>
+<p id="msg">Clearing site data…</p>
+<script>
+  /* TEMPORARY QA PAGE — clears this origin's localStorage + cookies so the
+     cookie-notice QA can start from a clean slate. NOT part of the site.
+     Delete this file before the branch is merged. */
+  try { window.localStorage.clear(); } catch (e) {}
+  try { window.sessionStorage.clear(); } catch (e) {}
+  document.cookie.split(';').forEach(function (c) {
+    var name = c.split('=')[0].trim();
+    if (!name) return;
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+  });
+  document.getElementById('msg').textContent = 'Site data cleared.';
+</script>
+</body>
+</html>
