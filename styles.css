@@ -337,6 +337,9 @@ footer { border-top: 1px solid var(--border); padding: 26px 0 34px; }
 .foot-tag { color: #22b8e8; }
 .foot-legal a { color: var(--muted); text-decoration: none; }
 .foot-legal a:hover { color: var(--text); text-decoration: underline; }
+.foot-dmca { display: inline-flex; align-items: center; }
+.foot-dmca a { display: inline-flex; }
+.foot-dmca img { display: block; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1020px) {
